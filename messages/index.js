@@ -5,7 +5,7 @@ For a complete walkthrough of creating this type of bot see the article at
 https://aka.ms/abs-node-luis
 -----------------------------------------------------------------------------*/
 "use strict";
-var i =0;
+var i = 0;
 var builder = require("botbuilder");
 var botbuilder_azure = require("botbuilder-azure");
 var path = require('path');
@@ -40,41 +40,40 @@ var intents = new builder.IntentDialog({ recognizers: [recognizer] })
 })
 
 .matches('Rude', (session, args) => {
-     session.send('Calm down babe. Everything will be fine :)');
-} )
+    session.send('Calm down babe. Everything will be fine :)');
+})
 
 .matches('Yes', (session, args) => {
-    if(i==5){
+    if (i == 5) {
         session.send('I\'m very glad when I know you feel better :) Talk with me again when you feel sad');
-    }
-    else {
+    } else {
         session.send('Oh dear, You can tell me everything. Don\'t worry, It gonna be better.');
     }
-    })
+})
 
 .matches('ImFine', (session, args) => {
-     session.send('I\'m glad to hear that :) If you feel sad, you can talk to me all the time\n\n -Gracey Bott-');
-    i=5;
-    
+    session.send('I\'m glad to hear that :) If you feel sad, you can talk to me all the time\n\n -Gracey Bott-');
+    i = 5;
+
 })
 
 .matches('ImDepressed', (session, args) => {
-     session.send('Don\'t be sad ! After a storm comes a calm, just believe me :) Everything will be fine');
+    session.send('Don\'t be sad ! After a storm comes a calm, just believe me :) Everything will be fine');
 })
 
 .matches('Thank', (session, args) => {
-    session.send('I\'m happy when I know I feel better :) ');
-})
-//general
+        session.send('I\'m happy when I know you feel better :) ');
+    })
+    //general
 
 .matches('NiceToMeetYou', (session, args) => {
     session.send('Nice to meet you toooooo :)');
 })
 
 .matches('YourName', (session, args) => {
-    session.send('My name is Gracey Bott.');
-})
-//general
+        session.send('My name is Gracey Bott.');
+    })
+    //general
 
 .onDefault((session) => {
     session.send('Sorry, I did not understand \'%s\'.', session.message.text);
